@@ -21,3 +21,7 @@ then breaking changes may occur in any release.
   tokens via the json `parse_constant` hook). 50-case pytest suite plus
   local verification against all 25 vectors of
   [csvj-org/conformance@master](https://github.com/csvj-org/conformance).
+- CI job that runs the `csvj-org/conformance@master` suite on every
+  push and PR: checks out conformance alongside pycsvj and runs
+  `pytest tests/conformance` with `CSVJ_CONFORMANCE_DIR` set. Local
+  `pytest` runs skip the conformance suite when the env var is unset.
