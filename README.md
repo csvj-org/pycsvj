@@ -64,11 +64,14 @@ JSON literal.
 
 ## Status
 
-`parse` and `stringify` are currently placeholders that raise
-`csvj.ParseError` / `csvj.WriteError` with a "not yet implemented"
-message. The public surface (`Table`, `Value`, `ParseError`,
-`WriteError`, `parse`, `stringify`) is stable so consumers can pin
-against it before the reader/writer lands (PLAN §7c.2).
+`parse` and `stringify` are implemented to strict §1: empty input,
+missing trailing newline, ragged rows, and duplicate header names are
+rejected; values are restricted to `str | int | float | bool | None`;
+`NaN` and `Infinity` are rejected on both read and write. The public
+surface is `Table`, `Value`, `ParseError`, `WriteError`, `parse`,
+`stringify`. All 25 vectors of
+[csvj-org/conformance@master](https://github.com/csvj-org/conformance)
+pass locally; CI wiring lands in a follow-up (PLAN §7c.3).
 
 ## Install
 
